@@ -1,0 +1,17 @@
+---
+title: "Part1 전처리 입문"
+author: "LeeSeungHee"
+date: '2021 7 23 '
+output: html_document
+---
+
+```{r}
+# tidyverse 패키지 설치
+install.packages('tidyverse')
+```
+
+```{r}
+# tidyverse 패키지 불러오기
+library(tidyverse)
+```
+
