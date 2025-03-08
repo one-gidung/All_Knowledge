@@ -1,0 +1,44 @@
+USE EDU
+
+SELECT *
+FROM [Member]
+
+-- gender를 man으로만 필터링
+SELECT *
+FROM MEMBER
+WHERE GENDER='MAN'
+
+--성별은 남자만, ADDR컬럽별로 회원수 집계
+SELECT ADDR, COUNT(MEM_NO) AS 회원수집계
+FROM MEMBER
+WHERE GENDER='MAN'
+GROUP BY ADDR
+
+--gender 값이 man인것만
+--group by는 addr, gender 기준으로
+SELECT ADDR, GENDER, COUNT(MEM_NO) AS 회원수집계
+FROM MEMBER
+WHERE GENDER='MAN'
+GROUP BY ADDR, GENDER
+-- WHERE 절의 MAN 필터링이 먼저 실행되어 GOURP을 GENDER로 나누었어도 MAN밖에 안 나온다.
+
+-- GENDER=MAN
+-- 그룹은 ADDR 기준
+-- HAVING : ADDR컬럼별로 회원수가 50 이상만 필터링
+SELECT ADDR, COUNT(MEM_NO) AS 회원수집계
+FROM MEMBER
+WHERE GENDER='MAN'
+GROUP BY ADDR
+HAVING COUNT(MEM_NO)>=50
+
+--테이블 MEMBER에서
+--GENDER가 MAN인
+--ADDR 컬럼별로 회원수집계
+--ADDR 컬럼별로 회원수 50 이상만
+--ADDR 컬럼별로 회원수 높은 순으로 정렬
+SELECT ADDR, COUNT(MEM_NO) AS 회원수집계
+FROM MEMBER
+WHERE GENDER='MAN'
+GROUP BY ADDR
+HAVING COUNT(MEM_NO)>=50
+ORDER BY COUNT(MEM_NO) DESC
